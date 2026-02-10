@@ -1,5 +1,5 @@
 import React from 'react';
-import { careerRoadmap } from '../mockData';
+import { careerMilestones } from '../mockData';
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } from 'recharts';
 import { FileText, Briefcase, CheckSquare, Target } from 'lucide-react';
 
@@ -14,15 +14,15 @@ const skillData = [
 
 const Career: React.FC = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in">
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">Career & Placement Co-Pilot</h2>
           <p className="text-slate-500">AI-driven guidance for your dream job.</p>
         </div>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-sm">
           <FileText size={18} />
-          Upload Resume
+          <span>Upload Resume</span>
         </button>
       </div>
 
@@ -40,7 +40,7 @@ const Career: React.FC = () => {
               </RadarChart>
             </ResponsiveContainer>
           </div>
-          <div className="mt-4 p-3 bg-blue-50 rounded-lg text-sm text-blue-800 w-full">
+          <div className="mt-4 p-3 bg-blue-50 rounded-lg text-sm text-blue-800 w-full border border-blue-100">
             <strong>AI Tip:</strong> Your System Design score is low. Consider the "Scalable Architectures" elective next semester.
           </div>
         </div>
@@ -49,34 +49,48 @@ const Career: React.FC = () => {
         <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-100">
           <h3 className="text-lg font-semibold text-slate-800 mb-6">Personalized Roadmap</h3>
           <div className="space-y-6">
-            {careerRoadmap.map((step) => (
-              <div key={step.id} className="flex items-start gap-4 relative">
-                <div className="flex flex-col items-center">
-                  <div className={`
-                    w-8 h-8 rounded-full flex items-center justify-center border-2 
-                    ${step.completed ? 'bg-green-100 border-green-500 text-green-600' : 'bg-white border-slate-300 text-slate-300'}
-                  `}>
-                    {step.completed ? <CheckSquare size={16} /> : <Target size={16} />}
+            {careerMilestones.map((step, idx) => {
+              const isCompleted = step.status === 'completed';
+              return (
+                <div key={step.id} className="flex items-start gap-4">
+                  <div className="flex flex-col items-center">
+                    <div className={`
+                      w-8 h-8 rounded-full flex items-center justify-center border-2 shrink-0
+                      ${isCompleted ? 'bg-green-100 border-green-500 text-green-600' : 'bg-white border-slate-300 text-slate-300'}
+                    `}>
+                      {isCompleted ? <CheckSquare size={16} /> : <Target size={16} />}
+                    </div>
+                    {idx !== careerMilestones.length - 1 && <div className="w-0.5 h-10 bg-slate-200 mt-2"></div>}
                   </div>
-                  {step.id !== '4' && <div className="w-0.5 h-10 bg-slate-200 mt-2"></div>}
+                  <div className="pb-2 flex-1">
+                    <div className="flex justify-between items-start">
+                        <h4 className={`font-medium ${isCompleted ? 'text-slate-800 line-through decoration-slate-400' : 'text-slate-800'}`}>
+                        {step.title}
+                        </h4>
+                        <span className={`text-[10px] px-2 py-0.5 rounded uppercase tracking-wider font-bold
+                            ${step.status === 'in_progress' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-500'}`}>
+                            {step.status.replace('_', ' ')}
+                        </span>
+                    </div>
+                    <span className="text-xs text-slate-500 uppercase tracking-wider mt-1 block">
+                      {step.category}
+                    </span>
+                    {step.aiSuggestion && (
+                        <p className="text-xs text-indigo-600 bg-indigo-50 p-2 rounded mt-2 border border-indigo-100">
+                            ✨ {step.aiSuggestion}
+                        </p>
+                    )}
+                  </div>
                 </div>
-                <div className="pb-6">
-                  <h4 className={`font-medium ${step.completed ? 'text-slate-800 line-through' : 'text-slate-800'}`}>
-                    {step.title}
-                  </h4>
-                  <span className="text-xs px-2 py-0.5 bg-slate-100 text-slate-500 rounded uppercase tracking-wider">
-                    {step.category}
-                  </span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
 
       {/* Preparation Modules */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
               <Briefcase size={20} />
@@ -84,11 +98,11 @@ const Career: React.FC = () => {
             <h3 className="font-semibold text-slate-800">Mock Interviews (AI)</h3>
           </div>
           <p className="text-sm text-slate-500 mb-4">Practice text-based behavioral and technical interviews with instant feedback.</p>
-          <button className="w-full py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
+          <button className="w-full py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors font-medium text-sm">
             Start Session
           </button>
         </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:border-pink-200 transition-colors">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-pink-100 rounded-lg text-pink-600">
               <FileText size={20} />
@@ -96,7 +110,7 @@ const Career: React.FC = () => {
             <h3 className="font-semibold text-slate-800">Resume Improver</h3>
           </div>
           <p className="text-sm text-slate-500 mb-4">Get line-by-line suggestions to beat the ATS and impress recruiters.</p>
-          <button className="w-full py-2 border border-pink-600 text-pink-600 rounded-lg hover:bg-pink-50 transition-colors">
+          <button className="w-full py-2 border border-pink-600 text-pink-600 rounded-lg hover:bg-pink-50 transition-colors font-medium text-sm">
             Analyze Resume
           </button>
         </div>

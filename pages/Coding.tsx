@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recha
 
 const Coding: React.FC = () => {
   const [problems, setProblems] = useState(initialProblems);
-  const [xp, setXp] = useState(currentUser.xp);
+  const [xp, setXp] = useState(currentUser.xp || 0);
   const [streak, setStreak] = useState(12);
 
   const handleSolve = (id: string) => {
@@ -29,13 +29,13 @@ const Coding: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in">
       <div className="flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold text-slate-800">DSA & Coding Practice</h2>
           <p className="text-slate-500">Gamified tracking to master algorithms.</p>
         </div>
-        <div className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg font-bold flex items-center gap-2">
+        <div className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg font-bold flex items-center gap-2 border border-yellow-200 shadow-sm">
             <Trophy size={18} />
             {xp} XP
         </div>
@@ -50,10 +50,10 @@ const Coding: React.FC = () => {
             </div>
             <p className="text-4xl font-bold">{problems.filter(p => p.solved).length}</p>
             <div className="mt-4 flex gap-2">
-              <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">
+              <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded border border-green-500/30">
                 {problems.filter(p => p.solved && p.difficulty === 'Easy').length} Easy
               </span>
-              <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
+              <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded border border-yellow-500/30">
                 {problems.filter(p => p.solved && p.difficulty === 'Medium').length} Med
               </span>
             </div>
@@ -81,15 +81,15 @@ const Coding: React.FC = () => {
           </div>
           <div className="space-y-3">
             {[...leaderboard].sort((a,b) => b.xp - a.xp).map((user, idx) => (
-                <div key={idx} className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-2">
+                <div key={idx} className="flex items-center justify-between text-sm p-2 hover:bg-slate-50 rounded-lg transition-colors">
+                    <div className="flex items-center gap-3">
                         <span className={`w-5 text-center font-bold ${idx === 0 ? 'text-yellow-500' : 'text-slate-400'}`}>{idx + 1}</span>
-                        <img src={user.avatar} className="w-6 h-6 rounded-full" alt="av" />
+                        <img src={user.avatar} className="w-8 h-8 rounded-full object-cover border border-slate-200" alt="av" />
                         <span className={user.name === currentUser.name ? 'font-bold text-slate-900' : 'text-slate-600'}>
                             {user.name}
                         </span>
                     </div>
-                    <span className="font-mono text-slate-500">{user.xp} XP</span>
+                    <span className="font-mono text-slate-500 font-medium">{user.xp} XP</span>
                 </div>
             ))}
           </div>
@@ -120,12 +120,12 @@ const Coding: React.FC = () => {
                 {!prob.solved ? (
                     <button 
                         onClick={() => handleSolve(prob.id)}
-                        className="px-4 py-2 bg-slate-900 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors"
+                        className="px-4 py-2 bg-slate-900 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors font-medium shadow-sm"
                     >
                         Solve
                     </button>
                 ) : (
-                    <span className="text-sm font-bold text-green-600 px-4">+XP</span>
+                    <span className="text-sm font-bold text-green-600 px-4 bg-green-100 rounded-lg py-1">+XP</span>
                 )}
               </div>
             ))}
@@ -157,8 +157,8 @@ const Coding: React.FC = () => {
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={topicStrength} layout="vertical">
                 <XAxis type="number" domain={[0, 100]} hide />
-                <YAxis dataKey="topic" type="category" width={80} />
-                <Tooltip />
+                <YAxis dataKey="topic" type="category" width={80} tick={{fontSize: 12}} />
+                <Tooltip cursor={{fill: 'transparent'}} />
                 <Bar dataKey="score" fill="#8b5cf6" radius={[0, 4, 4, 0]} barSize={24} />
               </BarChart>
             </ResponsiveContainer>

@@ -1,60 +1,86 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
-import Dashboard from './pages/Dashboard';
+import StudentDashboard from './pages/StudentDashboard';
+import FacultyDashboard from './pages/FacultyDashboard';
 import Academics from './pages/Academics';
+import Wellness from './pages/Wellness';
 import Career from './pages/Career';
 import Coding from './pages/Coding';
 import Community from './pages/Community';
 import Finance from './pages/Finance';
-import Wellness from './pages/Wellness';
 import Settings from './pages/Settings';
-import AiAssistant from './pages/AiAssistant';
-import { Menu } from 'lucide-react';
+import { UserProvider, useUser } from './components/UserContext';
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState('dashboard');
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+const MainApp = () => {
+  const { role } = useUser();
+  const [currentPage, setCurrentPage] = useState('dashboard');
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'dashboard': return <Dashboard />;
-      case 'ai-assistant': return <AiAssistant />;
-      case 'academics': return <Academics />;
-      case 'career': return <Career />;
-      case 'coding': return <Coding />;
-      case 'community': return <Community />;
-      case 'finance': return <Finance />;
-      case 'wellness': return <Wellness />;
-      case 'settings': return <Settings />;
-      default: return <Dashboard />;
+  const renderPage = () => {
+    // Shared Routes
+    if (currentPage === 'settings') return <Settings />;
+
+    // Student Routes
+    if (role === 'student') {
+      switch (currentPage) {
+        case 'dashboard': return <StudentDashboard />;
+        case 'academics': return <Academics />;
+        case 'wellness': return <Wellness />;
+        case 'career': return <Career />;
+        case 'coding': return <Coding />;
+        case 'community': return <Community />;
+        case 'finance': return <Finance />;
+        default: return <StudentDashboard />;
+      }
     }
+
+    // Faculty Routes
+    if (role === 'faculty') {
+      switch (currentPage) {
+        case 'faculty-dashboard': return <FacultyDashboard />;
+        case 'risk-monitor': return <FacultyDashboard />; // Temporary route
+        case 'students': return <FacultyDashboard />; // Temporary route
+        case 'academics': return <FacultyDashboard />; // Temporary route
+        default: return <FacultyDashboard />;
+      }
+    }
+
+    return <div>Page not found</div>;
   };
 
   return (
-    <div className="flex h-screen bg-slate-50 overflow-hidden">
-      <Sidebar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        isOpen={sidebarOpen}
-        toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-      />
+    <div className="flex min-h-screen bg-slate-50 text-slate-900 font-sans">
+      <Sidebar currentPage={currentPage} setPage={setCurrentPage} />
+      <main className="flex-1 overflow-y-auto h-screen relative">
+         {/* Top Header Area (Search, etc.) - Could be extracted */}
+         <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md px-8 py-4 flex items-center justify-between border-b border-slate-100">
+            <h2 className="text-xl font-bold text-slate-800 capitalize">
+              {currentPage.replace('-', ' ')}
+            </h2>
+            <div className="flex items-center gap-4">
+              <div className="hidden md:flex relative group">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="pl-4 pr-4 py-2 bg-slate-100 border-none rounded-xl text-sm focus:ring-2 focus:ring-blue-500/20 w-64 transition-all"
+                />
+              </div>
+            </div>
+         </header>
 
-      <div className="flex-1 flex flex-col h-full overflow-hidden w-full">
-        {/* Mobile Header */}
-        <header className="lg:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between shadow-sm z-10">
-          <h1 className="font-bold text-slate-800">Student Life Co-Pilot</h1>
-          <button onClick={() => setSidebarOpen(true)} className="p-2 text-slate-600">
-            <Menu size={24} />
-          </button>
-        </header>
-
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-8 pb-20">
-          <div className="max-w-7xl mx-auto">
-            {renderContent()}
-          </div>
-        </main>
-      </div>
+         <div className="p-6 md:p-8 max-w-[1600px] mx-auto">
+            {renderPage()}
+         </div>
+      </main>
     </div>
   );
+};
+
+function App() {
+  return (
+    <UserProvider>
+      <MainApp />
+    </UserProvider>
+  );
 }
+
+export default App;

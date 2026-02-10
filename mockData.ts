@@ -1,65 +1,141 @@
-import { RiskLevel, StudentProfile, AcademicMetric, CareerMilestone, ForumPost, Badge, CodingProblem, ChatContact, ChatMessage } from './types';
+import { Student, Faculty, Course, RiskAssessment, WellbeingLog, CareerMilestone, Badge, CodingProblem, ForumPost, ChatContact, ChatMessage } from './types/schema';
 
-export const currentUser: StudentProfile = {
-  id: 'st-12345',
+// --- Users ---
+
+export const currentUser: Student = {
+  id: 'student-1',
+  role: 'student',
   name: 'Alex Rivera',
+  email: 'alex.rivera@university.edu',
+  avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-PzmmvujnSuwjFctQi2l70lNkKjKuW6vYLhr80vjfsrvb2F-pJ-Az3OXMKx4n9Jam17Q5jxeuBri9gzf_mJcKgtk4IuQcQQqHDxu_EWSdGglavGfLDJRIhNUcNzyzNnk5m-WJvyb29PawyPtNGEzrGIPHLqYi_y_0RP6kZRSslJzqovIxScWWHRfK7X3VsKr4t7txYndU9S_y9M0roXFnx7SXyQ8r1_t6jIeX2v51PK-UchFKYavH1HGLHDdRyeYOHsrDKT_ePwY',
   major: 'Computer Science',
-  year: 'Junior',
-  university: 'State University of Tech',
-  avatar: 'https://picsum.photos/200',
+  year: 2,
+  gpa: 3.8,
+  departmentId: 'dept-cs',
   xp: 1250,
   level: 5,
   badges: ['streak_master']
 };
 
-export const academicMetrics: AcademicMetric[] = [
-  { subject: 'Data Structures', grade: 88, attendance: 95, trend: 'up' },
-  { subject: 'Linear Algebra', grade: 72, attendance: 80, trend: 'down' },
-  { subject: 'Web Development', grade: 94, attendance: 100, trend: 'stable' },
-  { subject: 'Ethics in AI', grade: 85, attendance: 90, trend: 'up' },
-];
-
-export const dropoutRiskAnalysis = {
-  level: RiskLevel.LOW,
-  factors: [
-    "Consistent LMS login activity.",
-    "Assignment submission rate > 95%.",
-    "Slight dip in Linear Algebra attendance (needs attention)."
-  ],
-  supportAction: "Schedule a 15-min chat with Prof. Johnson regarding Linear Algebra."
+export const currentFaculty: Faculty = {
+  id: 'faculty-1',
+  role: 'faculty',
+  name: 'Dr. Sarah Chen',
+  email: 'sarah.chen@university.edu',
+  avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200',
+  department: 'Computer Science',
+  coursesTaught: ['course-101', 'course-202']
 };
 
-export const careerRoadmap: CareerMilestone[] = [
-  { id: '1', title: 'Upload Resume for AI Parsing', completed: true, category: 'resume' },
-  { id: '2', title: 'Complete "System Design" Module', completed: false, category: 'skill' },
-  { id: '3', title: 'Mock Interview: Behavioral', completed: false, category: 'interview' },
-  { id: '4', title: 'Apply to 5 Summer Internships', completed: false, category: 'resume' },
-];
+// --- Other Students (For Faculty View) ---
 
-export const initialPosts: ForumPost[] = [
+export const students: Student[] = [
+  currentUser,
   {
-    id: 'p1',
-    author: 'Sarah Jenkins',
-    authorAvatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
-    category: 'Academics',
-    content: 'Has anyone taken Prof. Miller for Advanced Algos? Is the textbook mandatory?',
-    timestamp: '2 hours ago',
-    likes: 5,
-    replies: [
-      { id: 'r1', author: 'Mike Chen', content: 'Yes, he uses questions directly from the book for quizzes.', timestamp: '1 hour ago'}
-    ]
+    id: 'student-2',
+    role: 'student',
+    name: 'Jordan Lee',
+    email: 'jordan.lee@university.edu',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200&h=200',
+    major: 'Computer Science',
+    year: 2,
+    gpa: 2.4,
+    departmentId: 'dept-cs',
+    xp: 800,
+    level: 3
   },
   {
-    id: 'p2',
-    author: 'David Okonjo',
-    authorAvatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
-    category: 'Career',
-    content: 'Just bombed my first technical interview. Feeling pretty low. Any tips for bouncing back?',
-    timestamp: '5 hours ago',
-    likes: 12,
-    replies: []
+    id: 'student-3',
+    role: 'student',
+    name: 'Casey Smith',
+    email: 'casey.smith@university.edu',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200&h=200',
+    major: 'Computer Science',
+    year: 2,
+    gpa: 3.9,
+    departmentId: 'dept-cs',
+    xp: 1500,
+    level: 6
   }
 ];
+
+// --- Courses ---
+
+export const courses: Course[] = [
+  {
+    id: 'course-101',
+    code: 'CS101',
+    name: 'Intro to Computer Science',
+    credits: 4,
+    instructorId: 'faculty-1',
+    schedule: 'Mon/Wed 10:00 AM'
+  },
+  {
+    id: 'course-202',
+    code: 'CS202',
+    name: 'Data Structures & Algorithms',
+    credits: 4,
+    instructorId: 'faculty-1',
+    schedule: 'Tue/Thu 2:00 PM'
+  }
+];
+
+// --- Risk Assessments ---
+
+export const riskAssessments: Record<string, RiskAssessment> = {
+  'student-1': {
+    studentId: 'student-1',
+    overallRisk: 'Low',
+    factors: {
+      academic: 'Low',
+      attendance: 'Low',
+      wellbeing: 'Low'
+    },
+    details: "Alex is performing consistently well. Attendance is near perfect.",
+    interventionStatus: 'resolved'
+  },
+  'student-2': {
+    studentId: 'student-2',
+    overallRisk: 'High',
+    factors: {
+      academic: 'High', // Failing grades
+      attendance: 'Medium', // Missed last 2 classes
+      wellbeing: 'Medium' // Reported high stress
+    },
+    details: "Jordan's grades in CS202 have dropped significantly (65%). Attendance has become irregular over the last 2 weeks.",
+    interventionStatus: 'pending'
+  },
+  'student-3': {
+    studentId: 'student-3',
+    overallRisk: 'Low',
+    factors: {
+      academic: 'Low',
+      attendance: 'Low',
+      wellbeing: 'Low'
+    },
+    details: "Casey is a top performer. No concerns.",
+    interventionStatus: 'resolved'
+  }
+};
+
+// --- Wellbeing Logs ---
+
+export const wellbeingLogs: WellbeingLog[] = [
+  { id: 'log-1', studentId: 'student-1', timestamp: '2023-10-24T09:00:00Z', moodScore: 4, stressLevel: 3, sleepHours: 7, notes: "Feeling good about the exam." },
+  { id: 'log-2', studentId: 'student-1', timestamp: '2023-10-23T09:00:00Z', moodScore: 3, stressLevel: 5, sleepHours: 6, notes: "A bit tired." },
+  { id: 'log-3', studentId: 'student-1', timestamp: '2023-10-22T09:00:00Z', moodScore: 5, stressLevel: 2, sleepHours: 8, notes: "Great weekend!" },
+];
+
+// --- Career Milestones ---
+
+export const careerMilestones: CareerMilestone[] = [
+    { id: '1', studentId: 'student-1', title: 'Upload Resume for AI Parsing', status: 'completed', category: 'internship' },
+    { id: '2', studentId: 'student-1', title: 'Complete "System Design" Module', status: 'in_progress', category: 'skill' },
+    { id: '3', studentId: 'student-1', title: 'Mock Interview: Behavioral', status: 'todo', category: 'internship' },
+    { id: '4', studentId: 'student-1', title: 'Apply to 5 Summer Internships', status: 'todo', category: 'internship' },
+];
+
+// --- Gamification Data ---
 
 export const availableBadges: Badge[] = [
   { id: 'streak_master', name: 'Streak Master', icon: '🔥', description: 'Maintain a 7-day coding streak', unlocked: true },
@@ -77,22 +153,42 @@ export const initialProblems: CodingProblem[] = [
 ];
 
 export const leaderboard = [
-  { name: 'Alex Rivera', xp: 1250, avatar: 'https://picsum.photos/200' },
-  { name: 'Priya Patel', xp: 1400, avatar: 'https://i.pravatar.cc/150?u=priya' },
-  { name: 'Jordan Smith', xp: 1100, avatar: 'https://i.pravatar.cc/150?u=jordan' },
+    { name: 'Alex Rivera', xp: 1250, avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-PzmmvujnSuwjFctQi2l70lNkKjKuW6vYLhr80vjfsrvb2F-pJ-Az3OXMKx4n9Jam17Q5jxeuBri9gzf_mJcKgtk4IuQcQQqHDxu_EWSdGglavGfLDJRIhNUcNzyzNnk5m-WJvyb29PawyPtNGEzrGIPHLqYi_y_0RP6kZRSslJzqovIxScWWHRfK7X3VsKr4t7txYndU9S_y9M0roXFnx7SXyQ8r1_t6jIeX2v51PK-UchFKYavH1HGLHDdRyeYOHsrDKT_ePwY' },
+    { name: 'Casey Smith', xp: 1500, avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200&h=200' },
+    { name: 'Jordan Lee', xp: 800, avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200&h=200' }
 ];
 
-export const spendingData = [
-  { name: 'Food', value: 400 },
-  { name: 'Transport', value: 100 },
-  { name: 'Books', value: 150 },
-  { name: 'Ent.', value: 80 },
+// --- Community Data ---
+
+export const initialPosts: ForumPost[] = [
+  {
+    id: 'p1',
+    author: 'Sarah Jenkins',
+    authorAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200&h=200',
+    category: 'Academics',
+    content: 'Has anyone taken Prof. Miller for Advanced Algos? Is the textbook mandatory?',
+    timestamp: '2 hours ago',
+    likes: 5,
+    replies: [
+      { id: 'r1', author: 'Mike Chen', content: 'Yes, he uses questions directly from the book for quizzes.', timestamp: '1 hour ago'}
+    ]
+  },
+  {
+    id: 'p2',
+    author: 'David Okonjo',
+    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200',
+    category: 'Career',
+    content: 'Just bombed my first technical interview. Feeling pretty low. Any tips for bouncing back?',
+    timestamp: '5 hours ago',
+    likes: 12,
+    replies: []
+  }
 ];
 
 export const contacts: ChatContact[] = [
-    { id: 'c1', name: 'Priya Patel', avatar: 'https://i.pravatar.cc/150?u=priya', status: 'online', major: 'Computer Science' },
-    { id: 'c2', name: 'Jordan Smith', avatar: 'https://i.pravatar.cc/150?u=jordan', status: 'offline', major: 'Psychology' },
-    { id: 'c3', name: 'Mike Chen', avatar: 'https://i.pravatar.cc/150?u=mike', status: 'online', major: 'Data Science' },
+    { id: 'c1', name: 'Priya Patel', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200&h=200', status: 'online', major: 'Computer Science' },
+    { id: 'c2', name: 'Jordan Smith', avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200&h=200', status: 'offline', major: 'Psychology' },
+    { id: 'c3', name: 'Mike Chen', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200&h=200', status: 'online', major: 'Data Science' },
 ];
 
 export const initialChatHistory: Record<string, ChatMessage[]> = {
@@ -103,3 +199,12 @@ export const initialChatHistory: Record<string, ChatMessage[]> = {
     'c2': [],
     'c3': []
 };
+
+// --- Finance Data ---
+
+export const spendingData = [
+  { name: 'Food', value: 400 },
+  { name: 'Transport', value: 100 },
+  { name: 'Books', value: 150 },
+  { name: 'Ent.', value: 80 },
+];

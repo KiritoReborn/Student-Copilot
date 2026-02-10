@@ -1,9 +1,19 @@
 import React from 'react';
-import { academicMetrics, dropoutRiskAnalysis } from '../mockData';
+import { currentUser, riskAssessments } from '../mockData';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { AlertTriangle, BookOpen, Check } from 'lucide-react';
+import { AlertTriangle, TrendingUp } from 'lucide-react';
 
 const Academics: React.FC = () => {
+  const risk = riskAssessments[currentUser.id];
+
+  // Mock data derived for the chart since we don't have granular grade history in the new schema yet
+  const academicMetrics = [
+    { subject: 'CS101', grade: 92, attendance: 98 },
+    { subject: 'CS202', grade: 88, attendance: 95 },
+    { subject: 'Math 201', grade: 78, attendance: 85 },
+    { subject: 'Ethics', grade: 95, attendance: 100 },
+  ];
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
@@ -16,8 +26,8 @@ const Academics: React.FC = () => {
       {/* AI Risk Analysis - Supportive Wording */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
         <div className="flex items-start gap-4">
-          <div className="p-3 bg-white rounded-full shadow-sm">
-            <BrainCircuitIcon />
+          <div className="p-3 bg-white rounded-full shadow-sm text-blue-600">
+            <TrendingUp size={24} />
           </div>
           <div>
             <h3 className="text-lg font-semibold text-blue-900">AI Co-Pilot Insights</h3>
@@ -25,22 +35,14 @@ const Academics: React.FC = () => {
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium text-slate-600">Support Level Needed:</span>
                 <span className={`px-2 py-0.5 rounded text-xs font-bold ${
-                  dropoutRiskAnalysis.level === 'Low' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'
+                  risk?.overallRisk === 'Low' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'
                 }`}>
-                  {dropoutRiskAnalysis.level}
+                  {risk?.overallRisk || 'Unknown'}
                 </span>
               </div>
               <p className="text-sm text-slate-700 italic">
-                "{dropoutRiskAnalysis.supportAction}"
+                "{risk?.details || 'No data available.'}"
               </p>
-              <div className="mt-3">
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Key Factors (Explainable AI):</h4>
-                <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
-                  {dropoutRiskAnalysis.factors.map((factor, idx) => (
-                    <li key={idx}>{factor}</li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
         </div>
@@ -94,20 +96,5 @@ const Academics: React.FC = () => {
     </div>
   );
 };
-
-// Helper Icon
-const BrainCircuitIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
-    <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
-    <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
-    <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
-    <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
-    <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
-    <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
-    <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
-    <path d="M6 18a4 4 0 0 1-1.937-3.066" />
-    <path d="M17.937 14.934A4 4 0 0 1 16 18" />
-  </svg>
-);
 
 export default Academics;

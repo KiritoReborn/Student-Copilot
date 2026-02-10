@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethics &amp; Transparency Settings - Student Life Co-Pilot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-50": "#eef8ff",
+                        "primary-100": "#d9efff",
+                        "primary-200": "#bce4ff",
+                        "primary-800": "#155bcb",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-700 dark:text-slate-300 antialiased min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 hidden md:flex flex-col flex-shrink-0 z-20">
+<div class="p-6 flex items-center space-x-3">
+<div class="h-8 w-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-icons text-xl">school</span>
+</div>
+<span class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">SL Co-Pilot</span>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto mt-4">
+<a class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 group transition-colors" href="#">
+<span class="material-icons mr-3 text-slate-400 group-hover:text-primary transition-colors">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 group transition-colors" href="#">
+<span class="material-icons mr-3 text-slate-400 group-hover:text-primary transition-colors">people</span>
+                    Students
+                </a>
+<a class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 group transition-colors" href="#">
+<span class="material-icons mr-3 text-slate-400 group-hover:text-primary transition-colors">analytics</span>
+                    Analytics
+                </a>
+<div class="pt-6 pb-2 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">Settings</div>
+<a class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 group transition-colors" href="#">
+<span class="material-icons mr-3 text-slate-400 group-hover:text-primary transition-colors">settings</span>
+                    General
+                </a>
+<a class="flex items-center px-4 py-3 text-sm font-medium rounded-lg bg-primary/10 text-primary dark:text-primary-200 group transition-colors relative" href="#">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-primary"></div>
+<span class="material-icons mr-3 text-primary transition-colors">shield</span>
+                    Ethics &amp; Transparency
+                </a>
+<a class="flex items-center px-4 py-3 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 group transition-colors" href="#">
+<span class="material-icons mr-3 text-slate-400 group-hover:text-primary transition-colors">notifications</span>
+                    Notifications
+                </a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<img alt="Headshot of a faculty member with glasses" class="h-9 w-9 rounded-full object-cover border border-slate-200" data-alt="Faculty profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLdtfdOfXgRUyOK5ZEJEIZTy-Hfn6Q5fKct-NKJe2Ztz0fijPBA-JipI8DEeDV6Gwna8RjW5Daf_hwBCqIsRKLE8E639Q4Zi8gcoI9cZMUaFIzbHYb8mjNXBIW7zAMWReCYH5gaETzbe7do-M0-roagbW9Mzj8_z_9JhSmTADTO_vgkeuVI2IXaHiabAF_gbUY6vVZaVNE6_KaPP4SL-zqu12ECOLpbPO3ybspHUPPXVFqU-KqNs-SJ1px3dbr9yKE4ZTzDpnVEEc"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-900 dark:text-white truncate">Prof. J. Smith</p>
+<p class="text-xs text-slate-500 truncate">History Dept.</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<!-- Header Banner -->
+<div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 py-10">
+<div class="max-w-6xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary/10 text-primary rounded-full p-2">
+<span class="material-icons text-xl">policy</span>
+</span>
+<h1 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Ethics &amp; AI Transparency Center</h1>
+</div>
+<p class="text-slate-500 dark:text-slate-400 max-w-2xl mt-2 text-lg leading-relaxed">
+                                Understanding how Student Life Co-Pilot protects student data, mitigates bias, and supports your teaching responsibilities.
+                            </p>
+</div>
+<div class="flex-shrink-0">
+<button class="inline-flex items-center px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg shadow-sm text-sm font-medium text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+<span class="material-icons text-sm mr-2">download</span>
+                                Download Ethics Report (PDF)
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto px-8 py-10 space-y-10">
+<!-- Section 1: Data Access Matrix -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+<span class="material-icons mr-2 text-primary">visibility</span>
+                            Data Visibility Matrix
+                        </h2>
+<span class="text-sm text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">Last updated: Oct 2023</span>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<!-- What You See -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-green-200 dark:border-green-900 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-green-100 dark:border-green-900 bg-green-50/50 dark:bg-green-900/20 flex items-center justify-between">
+<h3 class="font-semibold text-green-800 dark:text-green-300">Faculty Can See</h3>
+<span class="material-icons text-green-600 dark:text-green-400">check_circle</span>
+</div>
+<ul class="divide-y divide-slate-100 dark:divide-slate-800">
+<li class="px-6 py-4 flex items-start gap-3">
+<span class="material-icons text-green-500 text-sm mt-1">check</span>
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Academic Milestones</p>
+<p class="text-sm text-slate-500">Grades, submission timestamps, and course progress.</p>
+</div>
+</li>
+<li class="px-6 py-4 flex items-start gap-3">
+<span class="material-icons text-green-500 text-sm mt-1">check</span>
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Attendance Records</p>
+<p class="text-sm text-slate-500">Physical and digital classroom presence logs.</p>
+</div>
+</li>
+<li class="px-6 py-4 flex items-start gap-3">
+<span class="material-icons text-green-500 text-sm mt-1">check</span>
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Flagged Interactions</p>
+<p class="text-sm text-slate-500">Only public forum posts flagged for academic integrity.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- What You Don't See -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-red-200 dark:border-red-900 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-red-100 dark:border-red-900 bg-red-50/50 dark:bg-red-900/20 flex items-center justify-between">
+<h3 class="font-semibold text-red-800 dark:text-red-300">Faculty Cannot See</h3>
+<span class="material-icons text-red-600 dark:text-red-400">lock</span>
+</div>
+<ul class="divide-y divide-slate-100 dark:divide-slate-800">
+<li class="px-6 py-4 flex items-start gap-3">
+<span class="material-icons text-red-400 text-sm mt-1">close</span>
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Private Health Records</p>
+<p class="text-sm text-slate-500">Medical history, disability service notes, counseling logs.</p>
+</div>
+</li>
+<li class="px-6 py-4 flex items-start gap-3">
+<span class="material-icons text-red-400 text-sm mt-1">close</span>
+<div>
+<p class="font-medium text-slate-900 dark:text-white">AI Chat Logs</p>
+<p class="text-sm text-slate-500">Private conversations between students and the AI tutor.</p>
+</div>
+</li>
+<li class="px-6 py-4 flex items-start gap-3">
+<span class="material-icons text-red-400 text-sm mt-1">close</span>
+<div>
+<p class="font-medium text-slate-900 dark:text-white">Personal Financial Data</p>
+<p class="text-sm text-slate-500">Financial aid status, tuition payments, or banking info.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Section 2: AI Settings & Preferences -->
+<section>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
+<span class="material-icons mr-2 text-primary">tune</span>
+                        AI Interaction Preferences
+                    </h2>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="max-w-2xl">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Summarize Grading Feedback</h3>
+<p class="text-sm text-slate-500 mt-1">Allow the AI to generate a summary of your grading comments for students to easily digest key takeaways.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:peer-focus:ring-primary/80 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<hr class="border-slate-100 dark:border-slate-800"/>
+<div class="flex items-center justify-between">
+<div class="max-w-2xl">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Predictive Intervention Alerts</h3>
+<p class="text-sm text-slate-500 mt-1">Receive proactive notifications when the AI detects a significant drop in a student's engagement pattern.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:peer-focus:ring-primary/80 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<hr class="border-slate-100 dark:border-slate-800"/>
+<div class="flex items-center justify-between">
+<div class="max-w-2xl">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Automated Syllabus Check</h3>
+<p class="text-sm text-slate-500 mt-1">Allow AI to scan your uploaded syllabus to auto-populate calendar deadlines for students.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 dark:peer-focus:ring-primary/80 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Bias Mitigation & AI Logic -->
+<section class="grid lg:grid-cols-3 gap-6">
+<!-- Column 1: How AI Works -->
+<div class="lg:col-span-2 space-y-6">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+<span class="material-icons mr-2 text-primary">psychology</span>
+                            How Our AI Works
+                        </h2>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Accordion Item 1 -->
+<details class="group p-6" open="">
+<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+<span class="text-slate-900 dark:text-white font-semibold">Algorithmic Auditing Process</span>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-slate-400">expand_more</span>
+</span>
+</summary>
+<div class="text-slate-600 dark:text-slate-400 mt-4 text-sm leading-relaxed">
+                                    Our models undergo rigorous quarterly audits by third-party ethics boards. We specifically test for demographic parity to ensure no student group is unfairly penalized by automated flags. The last audit was completed on September 15, 2023, passing with a 98% fairness score.
+                                </div>
+</details>
+<!-- Accordion Item 2 -->
+<details class="group p-6">
+<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+<span class="text-slate-900 dark:text-white font-semibold">Human-in-the-Loop Validation</span>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-slate-400">expand_more</span>
+</span>
+</summary>
+<div class="text-slate-600 dark:text-slate-400 mt-4 text-sm leading-relaxed">
+                                    AI never makes final decisions on academic standing. All "High Risk" alerts generated by the system must be reviewed and validated by a faculty member or academic advisor before any intervention action is taken.
+                                </div>
+</details>
+<!-- Accordion Item 3 -->
+<details class="group p-6">
+<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+<span class="text-slate-900 dark:text-white font-semibold">Data Retention Policy</span>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-slate-400">expand_more</span>
+</span>
+</summary>
+<div class="text-slate-600 dark:text-slate-400 mt-4 text-sm leading-relaxed">
+                                    Student behavioral data used for AI training is anonymized after each semester. Personal Identifiable Information (PII) is encrypted at rest and in transit, and is never used to train global models.
+                                </div>
+</details>
+</div>
+</div>
+<!-- Column 2: Compliance Badges -->
+<div class="lg:col-span-1 space-y-6">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+<span class="material-icons mr-2 text-primary">verified_user</span>
+                            Compliance
+                        </h2>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 flex flex-col gap-4">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+<div class="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+<span class="material-icons text-blue-600 dark:text-blue-400">gavel</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">FERPA Compliant</h4>
+<p class="text-xs text-slate-500">Educational Rights &amp; Privacy</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+<div class="h-12 w-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
+<span class="material-icons text-purple-600 dark:text-purple-400">security</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">GDPR Ready</h4>
+<p class="text-xs text-slate-500">Data Protection Regulation</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50">
+<div class="h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
+<span class="material-icons text-orange-600 dark:text-orange-400">verified</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">SOC 2 Type II</h4>
+<p class="text-xs text-slate-500">Security &amp; Availability</p>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+<a class="text-sm text-primary font-medium hover:underline flex items-center" href="#">
+                                    View full compliance certificates
+                                    <span class="material-icons text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Report Issue -->
+<div class="bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/20 p-6">
+<h4 class="font-bold text-slate-900 dark:text-white mb-2">Notice something off?</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">If you suspect the AI is showing bias or behaving unexpectedly, please report it immediately.</p>
+<button class="w-full py-2 px-4 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                                Report Potential Bias
+                            </button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="pt-10 border-t border-slate-200 dark:border-slate-800 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 dark:text-slate-500 pb-10">
+<p>© 2023 Student Life Co-Pilot. All rights reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

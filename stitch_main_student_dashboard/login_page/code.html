@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Student Life Co-Pilot</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0e62b8",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom geometric background pattern */
+        .geometric-bg {
+            background-color: #f6f7f8;
+            background-image: radial-gradient(#137fec 0.5px, transparent 0.5px), radial-gradient(#137fec 0.5px, #f6f7f8 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 1;
+        }
+        
+        .dark .geometric-bg {
+            background-color: #101922;
+            background-image: radial-gradient(#137fec 0.5px, transparent 0.5px), radial-gradient(#137fec 0.5px, #101922 0.5px);
+        }
+
+        /* Reduce opacity for subtle effect */
+        .bg-pattern {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0));
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0));
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4 relative overflow-hidden text-slate-800 dark:text-slate-100">
+<!-- Geometric Background Layer -->
+<div class="absolute inset-0 z-0 geometric-bg opacity-30 dark:opacity-10 pointer-events-none"></div>
+<!-- Abstract Shapes for Modern Feel -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute top-[20%] -right-[10%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Main Content Container -->
+<div class="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 relative z-10">
+<!-- Left Side: Welcome Text (Desktop Only) -->
+<div class="hidden md:flex flex-col flex-1 text-left space-y-6 max-w-lg">
+<div class="inline-flex items-center space-x-3 mb-4">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/30">
+<span class="material-icons text-2xl">school</span>
+</div>
+<span class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Student Life Co-Pilot</span>
+</div>
+<h1 class="text-5xl font-bold text-slate-900 dark:text-white leading-tight">
+                Your holistic guide to <span class="text-primary relative inline-block">
+                    academic success
+                    <svg class="absolute w-full h-3 -bottom-1 left-0 text-primary/20" preserveaspectratio="none" viewbox="0 0 100 10">
+<path d="M0 5 Q 50 10 100 5" fill="none" stroke="currentColor" stroke-width="8"></path>
+</svg>
+</span>.
+            </h1>
+<p class="text-lg text-slate-600 dark:text-slate-400">
+                Organize your assignments, track your wellness, and connect with campus resources all in one secure place.
+            </p>
+<div class="flex items-center space-x-4 pt-4">
+<div class="flex -space-x-3">
+<img alt="Smiling student portrait" class="w-10 h-10 rounded-full border-2 border-white dark:border-background-dark" data-alt="Small avatar of a smiling student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd6XLojCOrRkf4VCwBW6CJZBP8XXQIj5QoT2DgY6mNCk_ssy5r2eqOGPWMsUUvDhF4IvdAnV9-YQNW9GkwsUbchTp6FYr6PWls0xbxATxkOeTcXwxJ_Q5Ct7_zSzDICJ6iXmoUT7bKfNIerUNuToNM7MVBdbvEzOrghaCz5iMihv-VaY423xy-dxBeorYY2yXYZcaYg7KYNHpBpoGki75XOOR8VKzmhfFGeji02ACxeMic1atgb6pvgTIn_1b5zr6DqjDAHw9-sG4"/>
+<img alt="Male student portrait" class="w-10 h-10 rounded-full border-2 border-white dark:border-background-dark" data-alt="Small avatar of a male student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYiN3tntPCId9B3w5LT9J-aqC3laRF3YLTu48s9kpNTvpYPNtHaN2gJ0VFH_pes7IN-PHHlHYlnjTJOK5jDfqjcuRdphnbume5dhBexzOJ-5ZK_URZEUTjtW3BOSQIhdSPwbz0O7vWv3FWuFP5AJmwQpgevaSCn3dPsMhTzewP95PEo838WXZjpitvqFuTST3XEGrhaPYq5dlovtJfGu4jVJo9qNF-z58pWux08ka1iiej-f1RFDe6tBYqtYNB-TFAGu8hfdpIhqE"/>
+<img alt="Female student portrait" class="w-10 h-10 rounded-full border-2 border-white dark:border-background-dark" data-alt="Small avatar of a female student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAkITnuooR9z-7ZdkYytd5pbiKcJMsgpqbeMzGn7YUNmH5Vts8Ummd1HyGRi5jd1eraVJgUkJ90piR5jjoIWvsHq4MZrIfG5uxucQfiuzDlZXOMVM9u_wKuPlvWS1_ptzEdwjIjKsPMd66u8hElYUg_QiP8WrMYxFSiqvnrpwI97D3NMAWqKWg8xbM1n4rgFwk8DU2eQPQASizH21ImxWiQYsaHkgqOQzbXjeUeKXhTNX_qAUhOjDZTGMNWSK9XV5YnGH2ugx7T5M"/>
+<div class="w-10 h-10 rounded-full border-2 border-white dark:border-background-dark bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-300">+2k</div>
+</div>
+<div class="text-sm font-medium text-slate-600 dark:text-slate-400">
+                    Students already joined
+                </div>
+</div>
+</div>
+<!-- Right Side: Login Card -->
+<div class="w-full max-w-md">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-100 dark:border-slate-800 p-8 md:p-10 relative overflow-hidden">
+<!-- Top Accent Line -->
+<div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary/60 via-primary to-primary/60"></div>
+<!-- Mobile Logo (Visible only on small screens) -->
+<div class="md:hidden flex items-center justify-center space-x-2 mb-8">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-icons text-xl">school</span>
+</div>
+<span class="text-xl font-bold text-slate-900 dark:text-white">Co-Pilot</span>
+</div>
+<div class="text-center mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Welcome Back</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Please enter your details to sign in.</p>
+</div>
+<!-- Form -->
+<form action="#" class="space-y-5">
+<!-- Email Field -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-icons text-lg">mail_outline</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg leading-5 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out" id="email" name="email" placeholder="student@university.edu" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="password">Password</label>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-icons text-lg">lock_outline</span>
+</div>
+<input class="block w-full pl-10 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg leading-5 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm transition duration-150 ease-in-out" id="password" name="password" placeholder="••••••••" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-icons text-lg">visibility_off</span>
+</div>
+</div>
+<div class="flex justify-end">
+<a class="text-sm font-medium text-primary hover:text-primary-dark hover:underline" href="#">Forgot password?</a>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200" type="submit">
+                        Log In
+                    </button>
+</form>
+<!-- Divider -->
+<div class="relative mt-8 mb-6">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-2 bg-white dark:bg-slate-900 text-slate-500">Or continue with</span>
+</div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center w-full px-4 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<svg aria-hidden="true" class="h-5 w-5 mr-2" viewbox="0 0 24 24">
+<path class="text-slate-900 dark:text-white" d="M12.0003 20.45c4.6667 0 8.45-3.7833 8.45-8.45 0-.4167-.0334-.8167-.1-1.2h-8.35v2.4h4.7834c-.2 1.1166-1.2167 3.1666-4.7834 3.1666-2.8833 0-5.2333-2.35-5.2333-5.2333 0-2.8833 2.35-5.2333 5.2333-5.2333 1.35 0 2.5667.4833 3.5167 1.3833l2.5333-2.5333C16.4836 3.15 14.4169 2.25 12.0003 2.25 6.6169 2.25 2.2503 6.6167 2.2503 12c0 5.3833 4.3666 9.75 9.75 8.45z" fill="currentColor"></path>
+<path d="M2.2503 12c0-5.3833 4.3666-9.75 9.75-9.75 2.4166 0 4.4833.9 6.0166 2.5167l-2.5333 2.5333c-.95-.9-2.1667-1.3833-3.5167-1.3833-2.8833 0-5.2333 2.35-5.2333 5.2333 0 .7.1334 1.3667.3834 1.9833l-2.9 2.2334C2.9003 14.1667 2.2503 13.1333 2.2503 12z" fill="#EA4335"></path>
+<path d="M12.0003 21.75c-2.4334 0-4.6667-.8-6.4167-2.15l2.9-2.2333c.9667.65 2.2.9833 3.5167.9833 2.8833 0 5.2333-2.35 5.2333-5.2333 0-.1667-.0167-.3334-.0334-.5h-5.2v-2.4h7.6834c.0666.3833.1.8.1 1.2 0 4.6667-3.7833 8.45-8.45 8.45l-2.5334 2.5333c1.5334 1.6167 3.6 2.5167 6.0167 2.5167z" fill="#34A853"></path>
+<path d="M20.4503 12c0 4.6667-3.7833 8.45-8.45 8.45l2.5333-2.5333C15.6669 18.8167 16.6836 16.7667 16.8836 15.65h-4.7833v-2.4h8.35c.0666.3833.1.7833.1 1.2z" fill="#4285F4"></path>
+<path d="M5.6169 13.9833c-.25-.6166-.3833-1.2833-.3833-1.9833 0-2.8833 2.35-5.2333 5.2333-5.2333 1.35 0 2.5667.4833 3.5167 1.3833l2.5333-2.5333C14.4836 3.15 12.4169 2.25 10.0003 2.25 4.6169 2.25 .2503 6.6167 .2503 12c0 1.1333.2 2.2333.5666 3.25l2.9-2.2333c1.2667 1.1667 2.8667 1.8333 4.5667 1.8333z" fill="#FBBC05"></path>
+</svg>
+                        Google
+                    </button>
+<button class="flex items-center justify-center w-full px-4 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<svg aria-hidden="true" class="h-5 w-5 mr-2" viewbox="0 0 23 23">
+<path d="M0 0h23v23H0z" fill="#f3f3f3"></path>
+<path d="M1 1h10v10H1z" fill="#f35325"></path>
+<path d="M12 1h10v10H12z" fill="#81bc06"></path>
+<path d="M1 12h10v10H1z" fill="#05a6f0"></path>
+<path d="M12 12h10v10H12z" fill="#ffba08"></path>
+</svg>
+                        Microsoft
+                    </button>
+</div>
+<!-- Footer Links -->
+<div class="mt-8 text-center text-sm">
+<p class="text-slate-500 dark:text-slate-400">
+                        Don't have an account? 
+                        <a class="font-semibold text-primary hover:text-primary-dark hover:underline" href="#">Sign up for free</a>
+</p>
+</div>
+<!-- Privacy Assurance -->
+<div class="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500">
+<span class="material-icons text-sm mr-1">lock</span>
+                    Your data is private and secure.
+                </div>
+</div>
+<!-- Additional Footer Links -->
+<div class="mt-6 flex justify-center space-x-6 text-xs text-slate-500">
+<a class="hover:text-slate-700 dark:hover:text-slate-300" href="#">Privacy Policy</a>
+<a class="hover:text-slate-700 dark:hover:text-slate-300" href="#">Terms of Service</a>
+<a class="hover:text-slate-700 dark:hover:text-slate-300" href="#">Help Center</a>
+</div>
+</div>
+</div>
+</body></html>

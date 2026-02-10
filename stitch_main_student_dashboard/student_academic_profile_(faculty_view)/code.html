@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Academic Profile - Faculty View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .tooltip-trigger:hover .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .tooltip-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-600 dark:text-slate-300 antialiased min-h-screen flex flex-col">
+<!-- Navbar -->
+<nav class="sticky top-0 z-40 bg-white dark:bg-[#15202b] border-b border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons-outlined text-xl">school</span>
+</div>
+<span class="font-bold text-lg text-slate-800 dark:text-white">EduPilot</span>
+</div>
+<div class="hidden md:flex ml-8 space-x-8 h-full">
+<a class="border-b-2 border-transparent text-slate-500 hover:text-primary hover:border-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a aria-current="page" class="border-b-2 border-primary text-primary inline-flex items-center px-1 pt-1 text-sm font-medium" href="#">Students</a>
+<a class="border-b-2 border-transparent text-slate-500 hover:text-primary hover:border-primary inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors" href="#">Courses</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-slate-400 hover:text-slate-500 dark:hover:text-slate-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+<span class="sr-only">View notifications</span>
+<span class="material-icons-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-700">
+<img alt="Faculty profile photo" class="h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-slate-800" data-alt="Professor profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7MEiek1d0RPTDrRJGSH6bES22iMNMFIneQ8QYv7lHLVGU_DyUQjKhPsdDsBcnvX_o9vlFXpWe73jfRTR7YdS13L7G5JPWrA1MBRUs6JPmJcASOYePSuX9-5xz5r3ooDaY231ZWnehlANwLAP8tyuP-hOZ1rHyTdmEztn__8ZnjAKW-DL0SQLYW4vHxAzhPK1Sgl5_CfhZys0UHFvu6eaSsF9reRIgGsCUiAUqhF-ifs2TDP5AMWj7Z1fOgXBoCrgoD2fAzp1cVco"/>
+<div class="hidden md:block">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200">Dr. Alan Grant</p>
+<p class="text-xs text-slate-500">Paleontology Dept.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 py-8 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto w-full">
+<!-- Student Header -->
+<div class="bg-white dark:bg-[#15202b] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 mb-8">
+<div class="md:flex md:items-center md:justify-between">
+<div class="flex items-center mb-4 md:mb-0">
+<img alt="Student portrait" class="h-20 w-20 rounded-xl object-cover shadow-sm mr-6" data-alt="Portrait of student Sarah Jenning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOa8ml-XaHAz_4dG8mvaFbzZ3W5FaWMxmpWPCtqMbGwtRtIZZntx-3zhymFvE0OVfR4r0Pri5wAfyg6wJz-vMp_SMW-SwnKGhw2GIaWTTQUrBN_i7_jJ1QBllx4t6p5sqdM96OVzlT2LrP50HSjJAhvcFWRW84Oa1jecTCqkxADSgzTJy1tEAZbFGz9W39RFXv9iTo0s3cuHsE6lAi7ftj7EiNaVVD8TlASZSSYCaYIKoIbHyOBigkLkU1cIqN2Rf8Q4mbqmBam-A"/>
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Sarah Jenning</h1>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">Active</span>
+</div>
+<div class="mt-1 flex flex-wrap gap-y-2 gap-x-6 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-icons-outlined text-base">badge</span>
+<span>ID: 20248891</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-icons-outlined text-base">school</span>
+<span>B.S. Computer Science</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-icons-outlined text-base">schedule</span>
+<span>Year 3, Semester 2</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3">
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-lg px-4 py-2 border border-slate-100 dark:border-slate-700">
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Current GPA</p>
+<p class="text-xl font-bold text-slate-800 dark:text-white">3.65 <span class="text-xs font-normal text-emerald-500">▲ 0.12</span></p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-lg px-4 py-2 border border-slate-100 dark:border-slate-700">
+<p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Attendance Rate</p>
+<p class="text-xl font-bold text-slate-800 dark:text-white">92% <span class="text-xs font-normal text-slate-400">Avg</span></p>
+</div>
+<button class="ml-2 inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-primary hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors" type="button">
+<span class="material-icons-outlined mr-2 text-lg">mail</span>
+                        Contact Student
+                    </button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Data Visualizations & Academic Record (8 cols) -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Academic Trends Chart -->
+<div class="bg-white dark:bg-[#15202b] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+<span class="material-icons-outlined text-primary">trending_up</span>
+                            Academic Progression
+                        </h2>
+<select class="text-sm border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 focus:ring-primary focus:border-primary">
+<option>Last 4 Semesters</option>
+<option>All Time</option>
+</select>
+</div>
+<!-- Simulated Chart -->
+<div class="relative h-64 w-full bg-slate-50 dark:bg-slate-800/30 rounded-lg border border-slate-100 dark:border-slate-700 p-4 flex flex-col justify-end overflow-hidden">
+<!-- Grid lines background -->
+<div class="absolute inset-0 flex flex-col justify-between p-4 pointer-events-none opacity-20">
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+</div>
+<!-- Chart Area -->
+<div class="relative flex items-end justify-between h-48 w-full z-10 px-2">
+<!-- Data Point 1 -->
+<div class="flex flex-col items-center group w-1/5">
+<div class="relative h-full w-full flex items-end justify-center">
+<div class="h-[60%] w-full bg-gradient-to-t from-primary/10 to-primary/30 rounded-t-lg relative group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-xs rounded px-2 py-1">GPA 3.2</div>
+</div>
+<!-- Line dot -->
+<div class="absolute top-[40%] w-3 h-3 bg-primary rounded-full border-2 border-white dark:border-slate-800 shadow-sm"></div>
+</div>
+<span class="mt-3 text-xs font-medium text-slate-500">Fall '22</span>
+</div>
+<!-- Data Point 2 -->
+<div class="flex flex-col items-center group w-1/5">
+<div class="relative h-full w-full flex items-end justify-center">
+<div class="h-[70%] w-full bg-gradient-to-t from-primary/10 to-primary/30 rounded-t-lg relative group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-xs rounded px-2 py-1">GPA 3.4</div>
+</div>
+<!-- Line dot -->
+<div class="absolute top-[30%] w-3 h-3 bg-primary rounded-full border-2 border-white dark:border-slate-800 shadow-sm"></div>
+</div>
+<span class="mt-3 text-xs font-medium text-slate-500">Spring '23</span>
+</div>
+<!-- Data Point 3 -->
+<div class="flex flex-col items-center group w-1/5">
+<div class="relative h-full w-full flex items-end justify-center">
+<div class="h-[65%] w-full bg-gradient-to-t from-primary/10 to-primary/30 rounded-t-lg relative group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-xs rounded px-2 py-1">GPA 3.3</div>
+</div>
+<!-- Line dot -->
+<div class="absolute top-[35%] w-3 h-3 bg-primary rounded-full border-2 border-white dark:border-slate-800 shadow-sm"></div>
+</div>
+<span class="mt-3 text-xs font-medium text-slate-500">Fall '23</span>
+</div>
+<!-- Data Point 4 -->
+<div class="flex flex-col items-center group w-1/5">
+<div class="relative h-full w-full flex items-end justify-center">
+<div class="h-[82%] w-full bg-gradient-to-t from-primary/10 to-primary/30 rounded-t-lg relative group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-xs rounded px-2 py-1">GPA 3.65</div>
+</div>
+<!-- Line dot -->
+<div class="absolute top-[18%] w-3 h-3 bg-primary rounded-full border-2 border-white dark:border-slate-800 shadow-sm ring-4 ring-primary/20"></div>
+</div>
+<span class="mt-3 text-xs font-bold text-primary">Current</span>
+</div>
+</div>
+<!-- Connector Line SVG overlay -->
+<svg class="absolute inset-0 h-full w-full z-0 pointer-events-none" preserveaspectratio="none">
+<path class="opacity-50" d="M 80 160 L 220 140 L 360 150 L 500 110" fill="none" stroke="#137fec" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Current Courses -->
+<div class="bg-white dark:bg-[#15202b] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons-outlined text-slate-400">library_books</span>
+                             Current Courses
+                        </h2>
+<div class="overflow-hidden">
+<table class="min-w-full text-left text-sm whitespace-nowrap">
+<thead class="uppercase tracking-wider border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30 text-slate-500 font-medium">
+<tr>
+<th class="px-4 py-3" scope="col">Course</th>
+<th class="px-4 py-3" scope="col">Grade Est.</th>
+<th class="px-4 py-3 text-right" scope="col">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-4 py-3">
+<div class="font-medium text-slate-800 dark:text-slate-200">CS 301</div>
+<div class="text-xs text-slate-500">Algorithms</div>
+</td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400 font-medium">B+ (88%)</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">On Track</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-4 py-3">
+<div class="font-medium text-slate-800 dark:text-slate-200">CS 340</div>
+<div class="text-xs text-slate-500">Databases</div>
+</td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400 font-medium">A (94%)</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">On Track</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-4 py-3">
+<div class="font-medium text-slate-800 dark:text-slate-200">MATH 220</div>
+<div class="text-xs text-slate-500">Linear Algebra</div>
+</td>
+<td class="px-4 py-3 text-slate-600 dark:text-slate-400 font-medium">C (74%)</td>
+<td class="px-4 py-3 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">Attention</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Attendance Heatmap -->
+<div class="bg-white dark:bg-[#15202b] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+<span class="material-icons-outlined text-slate-400">event_available</span>
+                                Recent Attendance
+                            </h2>
+<span class="text-xs font-medium text-slate-500 bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">Last 4 Weeks</span>
+</div>
+<div class="grid grid-cols-7 gap-2 mb-2 text-center text-xs text-slate-400 font-medium uppercase">
+<div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Week 1 -->
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-800/30 flex items-center justify-center group relative cursor-help" title="Absent">
+<span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+</div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+<!-- Week 2 -->
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+<!-- Week 3 -->
+<div class="aspect-square rounded bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-800/30 flex items-center justify-center" title="Late"><span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+<!-- Week 4 -->
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-green-100 dark:bg-green-900/20 border border-green-200 dark:border-green-800/30 flex items-center justify-center" title="Present"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span></div>
+<div class="aspect-square rounded bg-slate-100 dark:bg-slate-700/50 flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-600"><span class="text-[10px] text-slate-400">Today</span></div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+<div class="aspect-square rounded bg-slate-50 dark:bg-slate-800"></div>
+</div>
+<div class="mt-4 flex gap-4 text-xs text-slate-500 justify-center">
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> Present</div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-yellow-400"></span> Late</div>
+<div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span> Absent</div>
+</div>
+</div>
+</div>
+<!-- Notes / Action Log -->
+<div class="bg-white dark:bg-[#15202b] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<h2 class="text-lg font-bold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons-outlined text-slate-400">edit_note</span>
+                        Private Faculty Notes
+                   </h2>
+<div class="relative">
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-4 text-sm text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-primary focus:border-transparent resize-none h-24" placeholder="Log an intervention or private observation..."></textarea>
+<button class="absolute bottom-3 right-3 p-1.5 bg-white dark:bg-slate-700 rounded-md shadow text-primary hover:text-blue-700 transition-colors">
+<span class="material-icons-outlined text-lg">send</span>
+</button>
+</div>
+<div class="mt-4 space-y-3">
+<div class="flex gap-3 text-sm">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 text-xs">AG</div>
+<div class="flex-1 bg-slate-50 dark:bg-slate-800/30 rounded-lg p-3 border border-slate-100 dark:border-slate-700/50">
+<p class="text-slate-600 dark:text-slate-400">Met with Sarah regarding the drop in Linear Algebra. She cited increased workload in CS 340 project. Recommended time-blocking.</p>
+<p class="text-xs text-slate-400 mt-1">Oct 12, 2023 • Dr. Alan Grant</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Support Context AI (4 cols) -->
+<div class="lg:col-span-4">
+<div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl shadow-lg border border-slate-700 text-white p-6 sticky top-24">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-lg font-bold flex items-center gap-2">
+<span class="material-icons-outlined text-primary">auto_awesome</span>
+                                Support Context
+                            </h2>
+<p class="text-xs text-slate-400 mt-1">AI-powered engagement analysis</p>
+</div>
+<div class="relative tooltip-trigger">
+<span class="material-icons-outlined text-slate-400 hover:text-white cursor-help text-lg">info</span>
+<div class="tooltip-content absolute right-0 top-full mt-2 w-64 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs p-3 rounded-lg shadow-xl border border-slate-200 dark:border-slate-600 z-50">
+                                This panel uses metadata from LMS submissions, library access logs, and participation metrics to suggest patterns. It does not access private communications.
+                            </div>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Insight Card 1: Shift in Timing -->
+<div class="bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 p-4 hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-500/20 text-blue-200 border border-blue-500/30">
+                                    85% Confidence
+                                </span>
+<div class="relative tooltip-trigger">
+<span class="material-icons-outlined text-slate-400 text-sm cursor-help opacity-0 group-hover:opacity-100 transition-opacity">help_outline</span>
+<div class="tooltip-content absolute right-0 bottom-full mb-2 w-56 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl border border-slate-600 z-50">
+                                        Logic: Comparison of submission timestamps relative to deadlines over the last 30 days vs previous 90 days.
+                                    </div>
+</div>
+</div>
+<h3 class="font-medium text-sm text-blue-100 mb-1">Shift in submission timing</h3>
+<p class="text-xs text-slate-300 leading-relaxed">
+                                Submissions are occurring <span class="text-white font-medium">3 hours</span> before deadlines on average, compared to <span class="text-white font-medium">48 hours</span> prior in the previous semester. This may indicate time management pressure.
+                            </p>
+</div>
+<!-- Insight Card 2: Positive Trend -->
+<div class="bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 p-4 hover:border-emerald-500/50 transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-emerald-500/20 text-emerald-200 border border-emerald-500/30">
+                                    92% Confidence
+                                </span>
+<div class="relative tooltip-trigger">
+<span class="material-icons-outlined text-slate-400 text-sm cursor-help opacity-0 group-hover:opacity-100 transition-opacity">help_outline</span>
+<div class="tooltip-content absolute right-0 bottom-full mb-2 w-56 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl border border-slate-600 z-50">
+                                        Logic: Count of discussion board posts and replies across all active courses.
+                                    </div>
+</div>
+</div>
+<h3 class="font-medium text-sm text-emerald-100 mb-1">Increased Peer Interaction</h3>
+<p class="text-xs text-slate-300 leading-relaxed">
+                                Forum participation has increased by <span class="text-white font-medium">15%</span> this month. Student is actively answering peer questions in CS 340.
+                            </p>
+</div>
+<!-- Insight Card 3: Warning -->
+<div class="bg-white/5 backdrop-blur-sm rounded-lg border border-amber-500/30 p-4 hover:border-amber-500/60 transition-colors group relative overflow-hidden">
+<!-- Subtle warning gradient -->
+<div class="absolute inset-0 bg-amber-500/5 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-amber-500/20 text-amber-200 border border-amber-500/30">
+                                    Possible Risk
+                                </span>
+<div class="relative tooltip-trigger">
+<span class="material-icons-outlined text-slate-400 text-sm cursor-help opacity-0 group-hover:opacity-100 transition-opacity">help_outline</span>
+<div class="tooltip-content absolute right-0 bottom-full mb-2 w-56 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl border border-slate-600 z-50">
+                                        Logic: Access logs for the MATH 220 course material page show 0 visits in the last 7 days.
+                                    </div>
+</div>
+</div>
+<h3 class="font-medium text-sm text-amber-100 mb-1 relative z-10">Low Resource Engagement</h3>
+<p class="text-xs text-slate-300 leading-relaxed relative z-10">
+                                No activity detected in MATH 220 course materials for <span class="text-white font-medium">7 days</span>. Usually precedes a grade drop.
+                            </p>
+<div class="mt-3 relative z-10">
+<button class="w-full py-1.5 px-3 bg-amber-500/10 hover:bg-amber-500/20 text-amber-200 text-xs rounded border border-amber-500/20 transition-colors flex items-center justify-center gap-1">
+<span class="material-icons-outlined text-sm">notifications_active</span>
+                                    Flag for Review
+                                </button>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-white/10">
+<p class="text-[10px] text-slate-500 text-center">
+                            AI insights are directional suggestions based on academic metadata. <a class="underline hover:text-slate-300" href="#">Learn about our Ethics Policy.</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

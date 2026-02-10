@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Well-being Support - Student Life Co-Pilot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<nav class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-icons text-primary">spa</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-slate-900 dark:text-white">Student Life Co-Pilot</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Holistic Student Support</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors relative">
+<span class="material-icons">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border-2 border-primary/20">
+<img alt="Profile" class="h-full w-full object-cover" data-alt="Portrait of a young student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3B37PR8tWTSPFI8EqNwgvU8rHUtVMFWI0rfN9PI8lpLTDC67G9OX823-CyJYVFj8-F6F1109w6bvY6RMBWQiWCsluwBk9JfTfj9Iw5PrrDauc3nIPlmdX0FXdCeyq3eC0ACu9inHgEIxl7bvXn2g98kXV5yr2iwQ7ie65Az5cKRQnjZdImjIF1RshkKyDk6hrCw-ILegES9no6-4oMorFuwgMIuB1s-nHYhdwBpU1aPVXbptyWhs6_2HHFkja4Mq3imylrFw-zUQ"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+<!-- Header -->
+<header class="mb-10 text-center sm:text-left">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Mental Well-being Support</h2>
+<p class="text-slate-500 dark:text-slate-400 max-w-2xl">Your safe space to track your feelings, understand your patterns, and find the support you need to thrive.</p>
+</header>
+<!-- Mood Check-in Section -->
+<section class="mb-10">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-8 text-center transition-all hover:shadow-md">
+<h3 class="text-xl font-semibold mb-6">How are you feeling today?</h3>
+<div class="flex flex-wrap justify-center gap-4 sm:gap-8">
+<!-- Amazing -->
+<button aria-label="Feeling Amazing" class="group flex flex-col items-center gap-2 focus:outline-none">
+<div class="w-16 h-16 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-4xl transform transition-transform group-hover:scale-110 group-focus:ring-2 group-focus:ring-primary group-focus:ring-offset-2 dark:group-focus:ring-offset-slate-900 cursor-pointer shadow-sm">
+                            🤩
+                        </div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Amazing</span>
+</button>
+<!-- Good -->
+<button aria-label="Feeling Good" class="group flex flex-col items-center gap-2 focus:outline-none">
+<div class="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-4xl transform transition-transform group-hover:scale-110 group-focus:ring-2 group-focus:ring-primary group-focus:ring-offset-2 dark:group-focus:ring-offset-slate-900 cursor-pointer shadow-sm">
+                            🙂
+                        </div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Good</span>
+</button>
+<!-- Okay -->
+<button aria-label="Feeling Okay" class="group flex flex-col items-center gap-2 focus:outline-none">
+<div class="w-16 h-16 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center text-4xl transform transition-transform group-hover:scale-110 group-focus:ring-2 group-focus:ring-primary group-focus:ring-offset-2 dark:group-focus:ring-offset-slate-900 cursor-pointer shadow-sm border-2 border-transparent hover:border-primary/20">
+                            😐
+                        </div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Okay</span>
+</button>
+<!-- Down -->
+<button aria-label="Feeling Down" class="group flex flex-col items-center gap-2 focus:outline-none">
+<div class="w-16 h-16 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-4xl transform transition-transform group-hover:scale-110 group-focus:ring-2 group-focus:ring-primary group-focus:ring-offset-2 dark:group-focus:ring-offset-slate-900 cursor-pointer shadow-sm">
+                            😕
+                        </div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Down</span>
+</button>
+<!-- Struggling -->
+<button aria-label="Feeling Struggling" class="group flex flex-col items-center gap-2 focus:outline-none">
+<div class="w-16 h-16 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-4xl transform transition-transform group-hover:scale-110 group-focus:ring-2 group-focus:ring-primary group-focus:ring-offset-2 dark:group-focus:ring-offset-slate-900 cursor-pointer shadow-sm">
+                            😫
+                        </div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">Struggling</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Mood Trends Chart Section -->
+<section class="mb-10">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 sm:p-8">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-semibold flex items-center gap-2">
+<span class="material-icons text-primary text-xl">insights</span>
+                        Mood Trends
+                    </h3>
+<select class="bg-background-light dark:bg-slate-800 border-none text-sm rounded-lg px-3 py-1 text-slate-600 dark:text-slate-300 focus:ring-2 focus:ring-primary cursor-pointer">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<!-- Simulated Chart -->
+<div class="relative h-64 w-full bg-gradient-to-b from-white to-background-light dark:from-slate-900 dark:to-slate-800/50 rounded-lg p-4 flex flex-col justify-end">
+<!-- Grid Lines -->
+<div class="absolute inset-0 p-4 flex flex-col justify-between pointer-events-none">
+<div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+<div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
+</div>
+<!-- Chart Line SVG -->
+<svg class="absolute inset-0 w-full h-full p-4 overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#137fec;stop-opacity:0.2"></stop>
+<stop offset="100%" style="stop-color:#137fec;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 C10,75 20,60 30,50 C40,40 50,45 60,30 C70,15 80,40 90,20 L100,25 L100,100 L0,100 Z" fill="url(#gradient)" stroke="none"></path>
+<path d="M0,80 C10,75 20,60 30,50 C40,40 50,45 60,30 C70,15 80,40 90,20 L100,25" fill="none" stroke="#137fec" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Data Points -->
+<circle class="fill-primary" cx="0" cy="80" r="1.5"></circle>
+<circle class="fill-primary" cx="30" cy="50" r="1.5"></circle>
+<circle class="fill-primary" cx="60" cy="30" r="1.5"></circle>
+<circle class="fill-primary" cx="90" cy="20" r="1.5"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between text-xs text-slate-400 mt-2 z-10 px-1">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Resources Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+<!-- Burnout Awareness Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col h-full hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+<span class="material-icons">battery_alert</span>
+</div>
+<h4 class="font-semibold text-lg">Burnout Meter</h4>
+</div>
+<div class="mb-6 flex-grow">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Are you feeling exhausted? Understanding your energy levels helps prevent burnout.</p>
+<div class="bg-background-light dark:bg-slate-800 rounded-lg p-4">
+<div class="flex justify-between text-xs font-medium mb-2 text-slate-700 dark:text-slate-300">
+<span>Your Energy Level</span>
+<span>65%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+<div class="bg-gradient-to-r from-orange-400 to-yellow-400 h-2.5 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 bg-background-light dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-colors">
+                    Take Self-Assessment
+                </button>
+</div>
+<!-- Breathing Exercise Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col h-full hover:border-primary/30 transition-colors relative overflow-hidden">
+<!-- Abstract decorative circle -->
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center gap-3 mb-4 relative z-10">
+<div class="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg text-teal-600 dark:text-teal-400">
+<span class="material-icons">air</span>
+</div>
+<h4 class="font-semibold text-lg">2-Minute Reset</h4>
+</div>
+<div class="mb-6 flex-grow relative z-10">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Feeling anxious? Try the box breathing technique to calm your nervous system instantly.</p>
+<div class="flex justify-center my-4">
+<div class="relative w-24 h-24 flex items-center justify-center">
+<!-- Pulse animation visual -->
+<div class="absolute inset-0 bg-primary/20 rounded-full animate-pulse"></div>
+<div class="absolute inset-2 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center border-2 border-primary/30">
+<span class="material-icons text-primary text-3xl">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 relative z-10">
+                    Start Breathing Exercise
+                </button>
+</div>
+<!-- Campus Resources Card -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col h-full hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-600 dark:text-purple-400">
+<span class="material-icons">support_agent</span>
+</div>
+<h4 class="font-semibold text-lg">We're Here For You</h4>
+</div>
+<div class="mb-6 flex-grow">
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Connect with professionals who can help navigate student life challenges.</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 p-3 rounded-lg bg-background-light dark:bg-slate-800/50">
+<span class="material-icons text-primary text-sm mt-0.5">call</span>
+<div>
+<div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Counseling Center</div>
+<div class="font-medium text-slate-800 dark:text-slate-200">(555) 019-2834</div>
+</div>
+</li>
+<li class="flex items-start gap-3 p-3 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20">
+<span class="material-icons text-red-500 text-sm mt-0.5">emergency</span>
+<div>
+<div class="text-xs font-semibold uppercase tracking-wider text-red-400">Crisis Line</div>
+<div class="font-bold text-red-600 dark:text-red-400">988</div>
+</div>
+</li>
+</ul>
+</div>
+<a class="block text-center text-sm font-medium text-primary hover:underline" href="#">View all support options</a>
+</div>
+</section>
+</main>
+<!-- Disclaimer Footer -->
+<footer class="mt-auto bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+<div class="flex-shrink-0 bg-yellow-100 dark:bg-yellow-900/30 p-2 rounded-full text-yellow-700 dark:text-yellow-400">
+<span class="material-icons text-xl">info</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Support tool, not a clinical diagnosis.</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-3xl">The content on this page is for educational and supportive purposes only. It is not intended to be a substitute for professional medical advice, diagnosis, or treatment. If you are in crisis, please contact emergency services immediately.</p>
+</div>
+</div>
+</footer>
+</body></html>

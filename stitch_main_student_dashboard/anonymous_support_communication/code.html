@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Anonymous Support Communication | Student Life Co-Pilot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0e64bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1a2430",
+                        "surface-darker": "#151e29",
+                        "border-dark": "#2a3645",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Lexend', sans-serif; }
+        /* Custom scrollbar for dark mode chat */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1a2430;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a3645;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3b4c60;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 h-screen flex flex-col overflow-hidden font-display">
+<!-- Top Navigation -->
+<header class="h-16 bg-white dark:bg-surface-darker border-b border-gray-200 dark:border-border-dark flex items-center justify-between px-6 shrink-0 z-20">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-icons-round text-xl">school</span>
+</div>
+<h1 class="font-semibold text-lg tracking-tight">Student Life Co-Pilot <span class="text-slate-400 dark:text-slate-500 font-normal mx-2">|</span> <span class="text-slate-500 dark:text-slate-400 font-normal">Faculty Portal</span></h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors relative">
+<span class="material-icons-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white dark:border-surface-darker"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-border-dark">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-medium">Dr. Elena Rostova</p>
+<p class="text-xs text-slate-500">Dept. of Psychology</p>
+</div>
+<img class="w-9 h-9 rounded-full object-cover border border-gray-200 dark:border-border-dark" data-alt="Profile portrait of a faculty member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAv4NLEHl_9xv9mZ5Y9oYHGRkDGrlIkm_A1zafYZEI38MrN1ye0fisJdhiLSrmEiEJjt2A81ymfVMoZrhJjDmklkm-7rkBFzghFkAs6rSeUX6uSyQOqdrHzW4HBP3Tq8WEyvuarhQiFOpx1MfqKvu3GG37lf03Who1PBJuROh5SqqzhzRRMC-bcZelMsX90tcDWCtiLJTGn3E9JKnJsufDP2E_gHl-aEsZyaSTyRT03gn4X0DeK07y4UteqKy79VeR05Wo_Q8GUw0"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Sidebar: Conversations List -->
+<aside class="w-80 lg:w-96 bg-white dark:bg-surface-darker border-r border-gray-200 dark:border-border-dark flex flex-col shrink-0">
+<!-- Search & Filters -->
+<div class="p-4 border-b border-gray-200 dark:border-border-dark space-y-3">
+<div class="relative">
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-slate-100 dark:bg-surface-dark text-sm rounded-lg pl-9 pr-4 py-2.5 border-none focus:ring-2 focus:ring-primary/50 text-slate-900 dark:text-white placeholder-slate-500" placeholder="Search by ticket ID or category..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 px-3 py-1.5 text-xs font-medium rounded-lg bg-primary text-white">Active (3)</button>
+<button class="flex-1 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-surface-dark text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-border-dark transition-colors">Archived</button>
+<button class="flex-1 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-surface-dark text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-border-dark transition-colors">Flagged</button>
+</div>
+</div>
+<!-- List -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2">
+<!-- Active Item -->
+<div class="group relative p-4 rounded-lg bg-primary/10 dark:bg-primary/10 border border-primary/20 cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                            Urgency: Medium
+                        </span>
+<span class="text-xs text-primary font-medium">2m ago</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-semibold text-sm text-slate-900 dark:text-white">Academic Stress</h3>
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">I'm really struggling with the workload this week...</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="material-icons-outlined text-sm text-slate-400">visibility_off</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Anonymous Student</span>
+</div>
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-lg"></div>
+</div>
+<!-- Item 2 -->
+<div class="p-4 rounded-lg bg-transparent hover:bg-slate-50 dark:hover:bg-surface-dark border border-transparent hover:border-gray-200 dark:hover:border-border-dark cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400">
+                            Urgency: Low
+                        </span>
+<span class="text-xs text-slate-500">4h ago</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-semibold text-sm text-slate-700 dark:text-slate-300">Financial Aid Question</h3>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">Is there a deadline extension for the grant...</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="material-icons-outlined text-sm text-slate-400">visibility_off</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Anonymous Student</span>
+</div>
+</div>
+<!-- Item 3: Identity Revealed -->
+<div class="p-4 rounded-lg bg-transparent hover:bg-slate-50 dark:hover:bg-surface-dark border border-transparent hover:border-gray-200 dark:hover:border-border-dark cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20">
+                            Urgency: High
+                        </span>
+<span class="text-xs text-slate-500">1d ago</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="font-semibold text-sm text-slate-700 dark:text-slate-300">Housing Issue</h3>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">I have nowhere to stay for the break...</p>
+<div class="mt-3 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+<span class="material-icons-round text-sm">check_circle</span>
+<span class="text-xs font-medium">Identity Shared</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center: Chat Interface -->
+<section class="flex-1 flex flex-col bg-slate-50 dark:bg-background-dark relative">
+<!-- Sticky Crisis Banner -->
+<div class="bg-amber-100 dark:bg-amber-900/30 border-b border-amber-200 dark:border-amber-800/50 px-6 py-3 flex items-start gap-3 shrink-0">
+<span class="material-icons-round text-amber-600 dark:text-amber-500 mt-0.5">warning</span>
+<div class="flex-1">
+<p class="text-sm text-amber-900 dark:text-amber-100 font-medium">Crisis Notice</p>
+<p class="text-xs text-amber-800 dark:text-amber-200/80 mt-0.5 leading-relaxed">
+                        This channel is not monitored 24/7. If you believe the student is in immediate danger or expressing intent of self-harm, please immediately contact Campus Safety at <strong class="underline decoration-amber-500/50">555-0199</strong> or the National Crisis Line at <strong class="underline decoration-amber-500/50">988</strong>.
+                    </p>
+</div>
+<button class="text-amber-600 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-800/50 rounded-lg p-1">
+<span class="material-icons-outlined text-lg">close</span>
+</button>
+</div>
+<!-- Chat Header -->
+<div class="px-6 py-4 bg-white dark:bg-surface-darker border-b border-gray-200 dark:border-border-dark flex items-center justify-between shrink-0 shadow-sm z-10">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="text-xs font-mono text-slate-400">#TKT-8921</span>
+<span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+<h2 class="text-lg font-bold text-slate-800 dark:text-white">Academic Stress</h2>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="material-icons-outlined text-[14px] text-slate-500">visibility_off</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300">Status: Anonymous Student</span>
+</div>
+<span class="text-xs text-slate-400">Last active: Just now</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium transition-colors">
+<span class="material-icons-outlined text-lg">admin_panel_settings</span>
+                        Request Identity Reveal
+                    </button>
+<button class="flex items-center gap-2 px-3 py-2 rounded-lg border border-red-200 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/20 text-sm font-medium transition-colors">
+<span class="material-icons-outlined text-lg">flag</span>
+                        Flag for Crisis Team
+                    </button>
+</div>
+</div>
+<!-- Messages Stream -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar bg-slate-50 dark:bg-[#0d1218]">
+<!-- System Message -->
+<div class="flex justify-center my-4">
+<span class="bg-slate-200 dark:bg-surface-dark text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-full border border-slate-300 dark:border-border-dark shadow-sm">
+                        Chat started today at 09:42 AM
+                    </span>
+</div>
+<!-- Student Message -->
+<div class="flex gap-4 max-w-3xl">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-surface-dark flex items-center justify-center shrink-0 border border-slate-300 dark:border-border-dark">
+<span class="material-icons-round text-slate-400 dark:text-slate-500">person</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Anonymous Student</span>
+<span class="text-xs text-slate-400">09:42 AM</span>
+</div>
+<div class="bg-white dark:bg-surface-dark text-slate-800 dark:text-slate-200 p-4 rounded-lg rounded-tl-none shadow-sm border border-gray-200 dark:border-border-dark">
+<p class="leading-relaxed">Hi Professor, thanks for picking this up. I'm really struggling with the workload this week. Between the midterms and my part-time job, I feel like I'm drowning and can't focus on the final project.</p>
+</div>
+</div>
+</div>
+<!-- Faculty Message -->
+<div class="flex gap-4 max-w-3xl ml-auto flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
+<img class="w-full h-full rounded-full object-cover" data-alt="Profile portrait of a faculty member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvigmMUxJLxg7YWXYRcEcQnwOcf0k0I_Yx_0PRCA6bjlKJwJbdQN5_eVrrhk7Z8WYhUZeyWrzVRRrNFvvn_jnj4TaCRJUS39RK7o2T7X5niZgiFH7xzquLD1bD1IPeTa_aBVNsjjoxWpypWvU0k9DwuAVuyDpGhnUZNCYjKtR2RhEkev4YGAR8twSUxwsP4NTFsvrORpUiuoODYrsMMFHYq3DbARw76B9VIbeELo8Hp-tLtd08LMkrrW9BASBzHbcKI2Ct3wPChTk"/>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<div class="flex items-baseline gap-2">
+<span class="text-xs text-slate-400">09:45 AM</span>
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">You</span>
+</div>
+<div class="bg-primary text-white p-4 rounded-lg rounded-tr-none shadow-md">
+<p class="leading-relaxed">I hear you, and I appreciate you reaching out. It sounds incredibly stressful to balance all of that at once. Let's look at some options together. Would an extension on the project milestone help relieve some immediate pressure?</p>
+</div>
+</div>
+</div>
+<!-- Student Message -->
+<div class="flex gap-4 max-w-3xl">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-surface-dark flex items-center justify-center shrink-0 border border-slate-300 dark:border-border-dark">
+<span class="material-icons-round text-slate-400 dark:text-slate-500">person</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Anonymous Student</span>
+<span class="text-xs text-slate-400">09:48 AM</span>
+</div>
+<div class="bg-white dark:bg-surface-dark text-slate-800 dark:text-slate-200 p-4 rounded-lg rounded-tl-none shadow-sm border border-gray-200 dark:border-border-dark">
+<p class="leading-relaxed">That would actually help a lot. I just didn't want to ask and seem like I was slacking. I haven't been sleeping much because of the anxiety.</p>
+</div>
+</div>
+</div>
+<!-- Typing Indicator -->
+<div class="flex gap-4 max-w-3xl opacity-60">
+<div class="w-10 h-10 rounded-full bg-transparent shrink-0"></div> <!-- Spacer -->
+<div class="bg-transparent pl-2 pt-2">
+<div class="flex gap-1">
+<div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
+<div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+<div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-white dark:bg-surface-darker border-t border-gray-200 dark:border-border-dark shrink-0">
+<!-- Quick Replies -->
+<div class="flex gap-2 mb-3 overflow-x-auto pb-1 no-scrollbar">
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-primary/10 dark:bg-primary/5 text-primary text-xs font-medium hover:bg-primary/20 transition-colors border border-primary/10">
+                        "I'm here to support you."
+                    </button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-slate-100 dark:bg-surface-dark text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-border-dark transition-colors border border-gray-200 dark:border-border-dark">
+                        Suggest Counseling Services
+                    </button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full bg-slate-100 dark:bg-surface-dark text-slate-600 dark:text-slate-400 text-xs font-medium hover:bg-slate-200 dark:hover:bg-border-dark transition-colors border border-gray-200 dark:border-border-dark">
+                        Discuss Extension Options
+                    </button>
+</div>
+<!-- Input Box -->
+<div class="relative bg-slate-50 dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-border-dark focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-all">
+<div class="flex items-end p-2 gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors rounded-lg hover:bg-slate-200 dark:hover:bg-surface-darker">
+<span class="material-icons-outlined">attach_file</span>
+</button>
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 resize-none py-2.5 max-h-32 min-h-[44px]" placeholder="Type a supportive message..." rows="1"></textarea>
+<button class="p-2 bg-primary hover:bg-primary-dark text-white rounded-lg shadow-md transition-all flex items-center justify-center h-10 w-10 shrink-0">
+<span class="material-icons-round text-lg">send</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center mt-2 px-1">
+<p class="text-[10px] text-slate-400">Press Enter to send, Shift + Enter for new line</p>
+<div class="flex items-center gap-1 text-[10px] text-slate-400">
+<span class="material-icons-outlined text-[12px]">lock</span>
+<span>End-to-end encrypted</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel (Context/Guidelines) - Hidden on smaller screens, visible on large -->
+<aside class="hidden xl:block w-72 bg-white dark:bg-surface-darker border-l border-gray-200 dark:border-border-dark p-6 overflow-y-auto">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wide">Support Guidelines</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30">
+<div class="flex items-center gap-2 mb-2 text-blue-700 dark:text-blue-400">
+<span class="material-icons-outlined text-sm">psychology</span>
+<h4 class="font-semibold text-xs">Active Listening</h4>
+</div>
+<p class="text-xs text-blue-900/70 dark:text-blue-200/70 leading-relaxed">
+                        Validate the student's feelings before offering solutions. Use phrases like "It sounds like..." or "I hear that you are..."
+                    </p>
+</div>
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-surface-dark border border-slate-100 dark:border-border-dark">
+<h4 class="font-semibold text-xs text-slate-700 dark:text-slate-300 mb-2">Resource Links</h4>
+<ul class="space-y-2">
+<li>
+<a class="flex items-center gap-2 text-xs text-primary hover:underline" href="#">
+<span class="material-icons-outlined text-[14px]">link</span>
+                                Counseling Center
+                            </a>
+</li>
+<li>
+<a class="flex items-center gap-2 text-xs text-primary hover:underline" href="#">
+<span class="material-icons-outlined text-[14px]">link</span>
+                                Academic Advising
+                            </a>
+</li>
+<li>
+<a class="flex items-center gap-2 text-xs text-primary hover:underline" href="#">
+<span class="material-icons-outlined text-[14px]">link</span>
+                                Emergency Housing
+                            </a>
+</li>
+</ul>
+</div>
+<div class="mt-6">
+<h3 class="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wide">Category Info</h3>
+<div class="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+<p><span class="font-medium text-slate-700 dark:text-slate-300">Category:</span> Academic Stress</p>
+<p><span class="font-medium text-slate-700 dark:text-slate-300">Avg Response:</span> 1 hr</p>
+<p><span class="font-medium text-slate-700 dark:text-slate-300">Related Policies:</span> <a class="text-primary hover:underline" href="#">Syllabus Extension Policy 4.2</a></p>
+</div>
+</div>
+</div>
+<!-- Quick Exit for privacy -->
+<div class="mt-auto pt-8">
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-500 hover:bg-slate-100 dark:hover:bg-surface-dark transition-colors text-xs font-medium">
+<span class="material-icons-outlined text-sm">visibility_off</span>
+                    Quick Blur / Exit
+                </button>
+</div>
+</aside>
+</main>
+</body></html>
